@@ -1,0 +1,22 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    
+}
+.root {
+    /*-fx-background-image: url("/image/root-background.jpg");*/
+    -fx-background-image: url("/image/background-pane.jpg");
+    -fx-background-size: 100% 100%;
+    -fx-background-color: gray;
+    -fx-background-repeat: no-repeat;
+    -fx-effect: dropshadow(three-pass-box, gray, 10, 0.5, 0, 0);
+    
+}
+
+/*#p_body{
+    -fx-background-image: url("/image/background-pane.jpg");
+    -fx-background-color: gray;
+    -fx-effect: dropshadow(three-pass-box, gray, 10, 0.5, 0, 0);
+}*/

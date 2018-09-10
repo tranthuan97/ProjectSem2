@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="598.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Login_Register">
+    <stylesheets>
+        <URL value="@fxml.css" />
+    </stylesheets>
+   <children>
+      <Accordion layoutX="199.0" layoutY="113.0" />
+      <Pane fx:id="p_body" layoutX="97.0" layoutY="52.0" prefHeight="296.0" prefWidth="404.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="97.0" AnchorPane.topAnchor="52.0">
+         <children>
+            <Button fx:id="btn_Login" ellipsisString="" layoutX="147.0" layoutY="181.0" mnemonicParsing="false" onAction="#btn_Login" prefHeight="32.0" prefWidth="133.0" style="border: 12;" text="Login" />
+            <TextField fx:id="tf_User" alignment="TOP_LEFT" layoutX="124.0" layoutY="88.0" prefHeight="25.0" prefWidth="178.0" promptText="USER NAME" />
+            <PasswordField fx:id="tp_Pwd" layoutX="124.0" layoutY="138.0" onKeyPressed="#tp_PwdKeyPress" prefHeight="25.0" prefWidth="178.0" promptText="PASSWORD" />
+            <Label layoutX="117.0" layoutY="14.0" text="Net Management">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <textFill>
+                  <RadialGradient centerX="0.55" centerY="0.5428571428571429" focusAngle="-145.62" focusDistance="0.13953488372093026" radius="0.8604651162790699">
+                     <stops>
+                        <Stop color="BLACK" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </textFill>
+            </Label>
+            <ImageView fitHeight="25.0" fitWidth="32.0" layoutX="85.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Administrator-icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="32.0" fitWidth="25.0" layoutX="85.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/lock-icon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="169.0" layoutY="251.0" opacity="0.57" text="Designed by TTB" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.UserLayoutController">
+    <stylesheets>
+        <URL value="@/css/userlayout.css" />
+    </stylesheets>
+   <children>
+      <ToolBar prefHeight="40.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <Button fx:id="btn_Register" mnemonicParsing="false" onAction="#btn_Register" text="Add Account" />
+            <Button mnemonicParsing="false" text="Edit Account" />
+            <Button mnemonicParsing="false" text="Delete Account" />
+            <TextField fx:id="searchField" disable="true" prefHeight="25.0" prefWidth="142.0" promptText="Searching" />
+            <CheckBox fx:id="btn_Search" mnemonicParsing="false" onAction="#Handle_btnSearch" text="Search" />
+            <Button fx:id="btn_loadAccount" mnemonicParsing="false" onAction="#Handle_LoadingAccount" text="Load Account" />
+        </items>
+      </ToolBar>
+      <ToolBar layoutY="353.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <items>
+            <TextField />
+            <Button mnemonicParsing="false" text="Limit" />
+            <Button mnemonicParsing="false" text="&lt;&lt;" />
+            <Button mnemonicParsing="false" text="Refresh" />
+            <Button mnemonicParsing="false" text="&gt;&gt;" />
+         </items>
+      </ToolBar>
+      <TableView fx:id="table" layoutY="39.0" prefHeight="326.0" prefWidth="600.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+        <columns>
+          <TableColumn fx:id="col_id" prefWidth="59.0" text="ID" />
+          <TableColumn fx:id="col_user" minWidth="9.0" prefWidth="138.0" text="Username" />
+            <TableColumn fx:id="col_pwd" prefWidth="127.0" text="Password" />
+            <TableColumn minWidth="1.0" prefWidth="122.0" text="Balance" />
+            <TableColumn prefWidth="98.0" text="Total" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
