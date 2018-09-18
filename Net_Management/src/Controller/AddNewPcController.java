@@ -1,32 +1,28 @@
-package Controller;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.awt.Window;
-import java.io.IOException;
+package Controller;
+
+import static Controller.Login_Register.md5;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -38,20 +34,50 @@ import javafx.stage.Stage;
  *
  * @author User
  */
-public class Login_Register implements Initializable {
-
-    Function function = new Function();
-    Connection conn;
+public class AddNewPcController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
+    Function function = new Function();
+    Connection conn;
+    Connection conn1;
+
     @FXML
-    Button btn_Login;
+    ComboBox cb_addnew;
     @FXML
-    TextField tf_User;
+    Button btn_accept;
     @FXML
-    PasswordField tp_Pwd;
+    TextField an_account;
+    @FXML
+    PasswordField an_pwd;
+
+    ObservableList oblist = FXCollections.observableArrayList();
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        FillComboBox();
+    }
+
+    public void FillComboBox() {
+        try {
+            conn = function.connectDB();
+            String query = "select Id from PCs where status = 0";
+            PreparedStatement pst = conn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                oblist.add(rs.getString("Id"));
+            }
+            cb_addnew.setItems(oblist);
+
+            rs.close();
+            pst.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     public static String md5(String msg) {
         try {
@@ -69,20 +95,14 @@ public class Login_Register implements Initializable {
         }
     }
 
-    public void tp_PwdKeyPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            btn_Login();
-        }
-    }
+    public void acceptHandle() {
 
-    public void btn_Login() {
         try {
-            Stage current = (Stage) btn_Login.getScene().getWindow();
             conn = function.connectDB();
-            try (PreparedStatement command = conn.prepareStatement("Select * from Accounts where Username=? and Password=? and Role='True'")) {
-                command.setString(1, tf_User.getText());
-                command.setString(2, md5(tp_Pwd.getText()));
-                if (tf_User.getText().isEmpty() || tp_Pwd.getText().isEmpty()) {
+            try (PreparedStatement command = conn.prepareStatement("Select * from Accounts where Username=? and Password=? and Role='False'")) {
+                command.setString(1, an_account.getText());
+                command.setString(2, md5(an_pwd.getText()));
+                if (an_account.getText().isEmpty() || an_pwd.getText().isEmpty()) {
                     function.showAlert(
                             "Login Dialog",
                             "Login failed",
@@ -92,8 +112,25 @@ public class Login_Register implements Initializable {
                 } else {
                     try (ResultSet rs = command.executeQuery()) {
                         if (rs.next()) {
-                            current.hide();
-                            function.nextStageSetWidthHeight(function.GUIMain, "Main Menu", 900, 700,"/css/pclayout.css",true);
+                            try {
+                                String getId = rs.getString("Id");
+                                rs.close();
+                                command.close();
+                                conn.close();
+                                conn1 = Function.connectDB();
+                                PreparedStatement pst = conn1.prepareStatement("Select GId from Guests where GId=?");
+                                pst.setString(1, getId);
+                                ResultSet rs1 = pst.executeQuery();
+//                                rs1.next();
+                                System.out.println("12");
+//                                System.out.println(rs1.getString("GId"));
+                                while(rs1.next()){
+                                    System.out.println("1");
+                                }
+                            } catch (Exception e) {
+                                System.out.println(e);
+                                e.printStackTrace();
+                            }
                         } else {
                             function.showAlert(
                                     "Login Dialog",
@@ -111,8 +148,4 @@ public class Login_Register implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }

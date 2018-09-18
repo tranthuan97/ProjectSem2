@@ -34,7 +34,7 @@
       <TableView fx:id="table" layoutY="39.0" prefHeight="326.0" prefWidth="600.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
         <columns>
           <TableColumn fx:id="col_id" prefWidth="59.0" text="ID" />
-          <TableColumn fx:id="col_user" minWidth="9.0" prefWidth="138.0" text="Username" />
+          <TableColumn fx:id="col_user" minWidth="9.0" onEditCommit="#entername" prefWidth="138.0" text="Username" />
             <TableColumn fx:id="col_pwd" prefWidth="127.0" text="Password" />
             <TableColumn minWidth="1.0" prefWidth="122.0" text="Balance" />
             <TableColumn prefWidth="98.0" text="Total" />

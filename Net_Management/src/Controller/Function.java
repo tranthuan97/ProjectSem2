@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -22,12 +23,12 @@ public class Function {
     public static final String Login = "/FXML/Login_Register.fxml";
     public static final String Register = "/FXML/Register.fxml";
     public static final String GUIMain = "/FXML/GUIMain.fxml";
-    
+    public static final String AddNew = "/FXML/AddNewPc.fxml";
+
     // Css Style
     public static final String cssLogin = "/css/loginStyle.css";
     public static final String cssRegister = "/css/registerStyle.css";
     public static final String cssUserLayout = "/css/userlayout.css";
-    
 
     static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     static final String DB_URL = "jdbc:sqlserver://localhost;";
@@ -50,14 +51,14 @@ public class Function {
     }
 
     // Next Stage func
-    public void nextStageDefault(String fxml, String title, Boolean resizable) {
+    public void nextStageDefault(String fxml, String title, Boolean resizable, String css) {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource(fxml));
             Scene scene = new Scene(root);
             Stage stage = new Stage();
 //          Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//          scene.getStylesheets().add(getClass().getResource("/css/registerStyle.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
             stage.setTitle(title);
             stage.setResizable(resizable);
             stage.setScene(scene);
@@ -66,21 +67,39 @@ public class Function {
             Logger.getLogger(Login_Register.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void nextStageDefault2(String fxml, String title, Boolean resizable, String css) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource(fxml));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+//          Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
+            stage.setTitle(title);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(resizable);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException ex) {
+            Logger.getLogger(Login_Register.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-    public void nextStageSetWidthHeight(String fxml, String title, int width, int height, boolean resizable) {
+    public void nextStageSetWidthHeight(String fxml, String title, int width, int height, String css, boolean resizable) {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource(fxml));
             Scene scene = new Scene(root, width, height);
             Stage stage = new Stage();
 //                                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                                scene.getStylesheets().add(getClass().getResource("/css/registerStyle.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
 
 //                                app_stage.hide();
             stage.setTitle(title);
             stage.setResizable(resizable);
             stage.setScene(scene);
-            stage.show();
+            stage.showAndWait();
         } catch (IOException ex) {
             Logger.getLogger(Login_Register.class.getName()).log(Level.SEVERE, null, ex);
         }

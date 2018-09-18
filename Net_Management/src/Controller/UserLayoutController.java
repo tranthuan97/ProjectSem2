@@ -10,8 +10,10 @@ import com.sun.jndi.toolkit.dir.SearchFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -20,6 +22,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,9 +31,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -68,10 +73,29 @@ public class UserLayoutController implements Initializable {
     @FXML
     CheckBox btn_Search;
     ObservableList<Models.ModelUserTable> oblist = FXCollections.observableArrayList();
-
+    @FXML
+    void entername(CellEditEvent event) {
+        Models.ModelUserTable u = table.getSelectionModel().getSelectedItem();
+        String id = (String)event.getNewValue();
+        String oldid = (String)event.getOldValue();
+        System.out.println(oldid);
+        System.out.println(id);
+        
+        try {
+            String query = "update Accounts "
+                    + "set Username='"+ id+ "' where Username ='"+oldid+"'";
+            Statement pst = conn.createStatement();
+            pst.executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        table.setEditable(true);
+        col_id.setCellFactory( TextFieldTableCell.forTableColumn());
+        col_user.setCellFactory( TextFieldTableCell.forTableColumn());
+        Handle_LoadingAccount();
     }
 
     public void btn_Register() {
@@ -94,24 +118,27 @@ public class UserLayoutController implements Initializable {
     }
 
     public void Handle_LoadingAccount() {
-        oblist.removeAll(oblist);
-//            conn = function.connectDB();
-//            ResultSet rs = conn.createStatement().executeQuery("Select * from USERS");
-//            while (rs.next()) {
-//                oblist.add(new ModelUserTable(
-//                        rs.getString("Id"),
-//                        rs.getString("Username"),
-//                        rs.getString("Password")
-//                ));
-//            }
-        oblist.add(new ModelUserTable("1", "admin", "admin"));
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
-        col_pwd.setCellValueFactory(new PropertyValueFactory<>("pwd"));
+        try {
+            oblist.removeAll(oblist);
+            conn = function.connectDB();
+            ResultSet rs = conn.createStatement().executeQuery("Select * from Accounts");
+            while (rs.next()) {
+                oblist.add(new ModelUserTable(
+                        rs.getString("Id"),
+                        rs.getString("Username"),
+                        rs.getString("Password")
+                ));
+            }
+            col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+            col_user.setCellValueFactory(new PropertyValueFactory<>("user"));
+            col_pwd.setCellValueFactory(new PropertyValueFactory<>("pwd"));
 //            col_addr.setCellValueFactory(new PropertyValueFactory<>("addr"));
 //            col_phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
 //        col_balance.setCellValueFactory(new PropertyValueFactory<>("balance"));
-        table.setItems(oblist);
+            table.setItems(oblist);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserLayoutController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void Handle_btnSearch() {

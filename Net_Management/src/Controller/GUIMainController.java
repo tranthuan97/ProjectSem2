@@ -72,7 +72,8 @@ public class GUIMainController implements Initializable {
 //        lvmaster.setItems(ols);
         olsPc.remove(olsPc);
         String a = "Máy trạm";
-        olsPc.addAll(a);
+        String b = "History";
+        olsPc.addAll(a, b);
         pclist.getItems().addAll(olsPc);
     }
 
@@ -98,7 +99,8 @@ public class GUIMainController implements Initializable {
                 int i = pclist.getSelectionModel().getSelectedIndex();
                 if (i == 0) {
                     try {
-                        Node node = (AnchorPane) FXMLLoader.load(getClass().getResource("/FXML/UserLayout.fxml"));
+                        Node node = (AnchorPane) FXMLLoader.load(getClass().getResource("/FXML/PCLayout.fxml"));
+                        node.getStyleClass().add(getClass().getResource("/css/pclayout.css").toExternalForm());
                         Tab tb = new Tab("Máy Trạm", node);
                         tbpane.getTabs().add(tb);
                     } catch (IOException ex) {

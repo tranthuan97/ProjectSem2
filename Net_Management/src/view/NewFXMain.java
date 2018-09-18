@@ -24,8 +24,8 @@ public class NewFXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-//        Parent root = FXMLLoader.load(getClass().getResource("/FXML/Login_Register.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/FXML/UserLayout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/FXML/Login_Register.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("/FXML/UserLayout.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/css/loginStyle.css").toExternalForm());
