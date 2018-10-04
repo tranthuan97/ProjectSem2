@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="411.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GUIMainController">
    <children>
-      <SplitPane dividerPositions="0.29797979797979796" layoutY="25.0" prefHeight="386.0" prefWidth="476.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <SplitPane dividerPositions="0.21940928270042195" layoutY="25.0" prefHeight="361.0" prefWidth="476.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -66,12 +66,12 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem fx:id="mi_openNT" mnemonicParsing="false" text="Open note text" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="Change Password" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -81,5 +81,15 @@
           </Menu>
         </menus>
       </MenuBar>
+      <ToolBar layoutX="181.0" layoutY="384.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="27.0" prefWidth="288.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0">
+         <items>
+            <Label fx:id="lb_clock" text="label" />
+         </items>
+      </ToolBar>
+      <ToolBar layoutY="392.0" prefHeight="27.0" prefWidth="200.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0">
+        <items>
+          <Button fx:id="btn_logout" mnemonicParsing="false" onAction="#LogoutHandle" prefHeight="10.0" prefWidth="68.0" text="Log out" />
+        </items>
+      </ToolBar>
    </children>
 </AnchorPane>

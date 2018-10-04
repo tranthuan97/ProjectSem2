@@ -119,7 +119,7 @@ public class RegisterController implements Initializable {
                         return;
                     }
 
-                    PreparedStatement command1 = conn.prepareStatement("Select * from USERS where userName=?");
+                    PreparedStatement command1 = conn.prepareStatement("Select * from PCs where userName=?");
                     command1.setString(1, re_user.getText());
 
                     ResultSet rs = command1.executeQuery();

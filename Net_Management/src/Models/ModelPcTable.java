@@ -11,14 +11,12 @@ package Models;
  */
 public class ModelPcTable {
 
-    String id, user, total, start, end, status;
+    String id, user, start, status;
 
-    public ModelPcTable(String id, String user, String total, String start, String end, String status) {
+    public ModelPcTable(String id, String user, String start, String status) {
         this.id = id;
         this.user = user;
-        this.total = total;
         this.start = start;
-        this.end = end;
         this.status = status;
     }
 
@@ -38,28 +36,12 @@ public class ModelPcTable {
         this.user = user;
     }
 
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
-        this.total = total;
-    }
-
     public String getStart() {
         return start;
     }
 
     public void setStart(String start) {
         this.start = start;
-    }
-
-    public String getEnd() {
-        return end;
-    }
-
-    public void setEnd(String end) {
-        this.end = end;
     }
 
     public String getStatus() {

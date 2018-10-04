@@ -18,8 +18,8 @@
       <ToolBar prefHeight="40.0" prefWidth="650.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <Button fx:id="btn_addnew" mnemonicParsing="false" onAction="#AddNewHandle" text="Add new" />
-            <Button mnemonicParsing="false" text="Check out" />
-            <Button mnemonicParsing="false" text="Transition" />
+            <Button fx:id="btn_checkout" mnemonicParsing="false" onAction="#checkoutHandle" text="Check out" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#pcRefreshHandle" prefHeight="25.0" prefWidth="89.0" text="Refresh PCs" />
         </items>
       </ToolBar>
       <SplitPane dividerPositions="0.6604938271604939" layoutY="40.0" prefHeight="390.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="38.0">
@@ -48,6 +48,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label fx:id="text_1" layoutX="42.0" layoutY="81.0" text="Computer 1" />
                                        </children>
@@ -58,6 +61,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label layoutX="42.0" layoutY="81.0" text="Computer 2" />
                                        </children>
@@ -68,6 +74,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label layoutX="42.0" layoutY="81.0" text="Computer 3" />
                                        </children>
@@ -78,6 +87,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label layoutX="42.0" layoutY="81.0" text="Computer 4" />
                                        </children>
@@ -88,6 +100,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label layoutX="42.0" layoutY="81.0" text="Computer 5" />
                                        </children>
@@ -98,6 +113,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label layoutX="42.0" layoutY="81.0" text="Computer 6" />
                                        </children>
@@ -108,6 +126,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label layoutX="42.0" layoutY="80.0" text="Computer 7" />
                                        </children>
@@ -118,6 +139,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label layoutX="42.0" layoutY="80.0" text="Computer 8" />
                                        </children>
@@ -128,6 +152,9 @@
                                              <image>
                                                 <Image url="@../image/online1_computer.png" />
                                              </image>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </ImageView>
                                           <Label layoutX="42.0" layoutY="80.0" text="Computer 9" />
                                        </children>
@@ -140,11 +167,9 @@
                               <TableView fx:id="pc_table" layoutX="93.0" layoutY="-53.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-0.0">
                                 <columns>
                                   <TableColumn fx:id="col_pcid" prefWidth="43.0" text="PC" />
-                                  <TableColumn fx:id="col_pcusername" prefWidth="89.0" text="Username" />
-                                    <TableColumn fx:id="col_pctotal" prefWidth="86.0" text="Total" />
-                                    <TableColumn fx:id="col_pcstart" prefWidth="79.0" text="Start" />
-                                    <TableColumn fx:id="col_pcend" prefWidth="78.0" text="End" />
-                                    <TableColumn fx:id="col_pcstatus" prefWidth="64.0" text="Status" />
+                                  <TableColumn fx:id="col_pcusername" prefWidth="129.0" text="Username" />
+                                    <TableColumn fx:id="col_pcstart" prefWidth="112.0" text="Start" />
+                                    <TableColumn fx:id="col_pcstatus" minWidth="0.0" prefWidth="47.0" text="Status" />
                                 </columns>
                               </TableView>
                            </children></AnchorPane>

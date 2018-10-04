@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="373.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CheckoutPcController">
+   <children>
+      <ComboBox fx:id="cb_checkout" layoutX="137.0" layoutY="27.0" onAction="#cbCheckoutHandle" prefWidth="150.0" />
+      <TextField fx:id="tf_user" disable="true" layoutX="120.0" layoutY="99.0" />
+      <TextField fx:id="tf_start" disable="true" layoutX="120.0" layoutY="149.0" />
+      <TextField fx:id="tf_end" disable="true" layoutX="120.0" layoutY="206.0" />
+      <TextField fx:id="tf_total" disable="true" layoutX="120.0" layoutY="260.0" />
+      <Label layoutX="60.0" layoutY="31.0" text="Computer :" />
+      <Label layoutX="60.0" layoutY="153.0" text="Start :" />
+      <Label layoutX="60.0" layoutY="210.0" text="End :" />
+      <Label layoutX="60.0" layoutY="264.0" text="Total :" />
+      <Label layoutX="43.0" layoutY="103.0" text="Username :" />
+      <Label layoutX="287.0" layoutY="153.0" text="TIME" />
+      <Label layoutX="287.0" layoutY="210.0" text="TIME" />
+      <Label layoutX="287.0" layoutY="264.0" text="VND" />
+      <Button fx:id="btn_accept" layoutX="217.0" layoutY="317.0" mnemonicParsing="false" onAction="#acceptHandle" text="Accept" />
+   </children>
+</AnchorPane>

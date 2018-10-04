@@ -42,6 +42,7 @@ public class Login_Register implements Initializable {
 
     Function function = new Function();
     Connection conn;
+    Connection conn1;
 
     /**
      * Initializes the controller class.
@@ -92,8 +93,22 @@ public class Login_Register implements Initializable {
                 } else {
                     try (ResultSet rs = command.executeQuery()) {
                         if (rs.next()) {
+                            String EId = rs.getString("Id");
+                            String EAccount = rs.getString("Username");
+                            rs.close();
+                            command.close();
+                            conn1 = function.connectDB();
+                            PreparedStatement command1 = conn1.prepareStatement("Update SaveLoginStatus Set EId=?, EAccount=?, IsLoggin=? where Id=1");
+                            command1.setString(1, EId);
+                            command1.setString(2, EAccount);
+                            command1.setString(3, "true");
+                            int i = command1.executeUpdate();
+                            if (i == 1) {
+                                System.out.println("Successfully");
+                            }
                             current.hide();
-                            function.nextStageSetWidthHeight(function.GUIMain, "Main Menu", 900, 700,"/css/pclayout.css",true);
+                            function.nextStageSetWidthHeight(function.GUIMain, "Main Menu", 900, 700, "/css/pclayout.css", true);
+                            command1.close();
                         } else {
                             function.showAlert(
                                     "Login Dialog",
