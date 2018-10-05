@@ -6,7 +6,7 @@
 package Controller;
 
 import Models.ModelPcTable;
-import Models.ModelUserTable;
+import Models.ModelAccountTable;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -261,7 +261,7 @@ public class PCLayoutController implements Initializable {
             col_pcstatus.setCellValueFactory(new PropertyValueFactory<>("status"));
             pc_table.setItems(oblist);
         } catch (SQLException ex) {
-            Logger.getLogger(UserLayoutController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AccountLayoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

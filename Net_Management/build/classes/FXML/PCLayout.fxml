@@ -17,9 +17,9 @@
    <children>
       <ToolBar prefHeight="40.0" prefWidth="650.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <Button fx:id="btn_addnew" mnemonicParsing="false" onAction="#AddNewHandle" text="Add new" />
-            <Button fx:id="btn_checkout" mnemonicParsing="false" onAction="#checkoutHandle" text="Check out" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#pcRefreshHandle" prefHeight="25.0" prefWidth="89.0" text="Refresh PCs" />
+          <Button fx:id="btn_addnew" mnemonicParsing="false" onAction="#AddNewHandle" text="Open" />
+            <Button fx:id="btn_checkout" mnemonicParsing="false" onAction="#checkoutHandle" text="Close" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#pcRefreshHandle" prefHeight="25.0" prefWidth="89.0" text="Refresh" />
         </items>
       </ToolBar>
       <SplitPane dividerPositions="0.6604938271604939" layoutY="40.0" prefHeight="390.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="38.0">

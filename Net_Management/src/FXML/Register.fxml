@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
-   <children>
-      <Pane layoutX="81.0" layoutY="17.0" prefHeight="367.0" prefWidth="438.0">
-         <children>
-            <Button fx:id="btn_Register" layoutX="188.0" layoutY="280.0" mnemonicParsing="false" onAction="#Handle_Register" prefHeight="25.0" prefWidth="89.0" text="Accept" />
-            <TextField fx:id="re_user" layoutX="203.0" layoutY="60.0" promptText="Username" />
-            <TextField fx:id="re_sdt" layoutX="203.0" layoutY="160.0" promptText="Phone number" />
-            <TextField fx:id="re_addr" layoutX="203.0" layoutY="194.0" promptText="Address" />
-            <TextField fx:id="re_money" layoutX="203.0" layoutY="231.0" promptText="Money" />
-            <Label layoutX="86.0" layoutY="64.0" text="Username" />
-            <Label layoutX="85.0" layoutY="100.0" prefHeight="17.0" prefWidth="53.0" text="Password" />
-            <Label layoutX="87.0" layoutY="164.0" prefHeight="17.0" prefWidth="89.0" text="Phone number" />
-            <Label layoutX="87.0" layoutY="198.0" prefHeight="17.0" prefWidth="53.0" text="Address" />
-            <Label layoutX="88.0" layoutY="235.0" prefHeight="17.0" prefWidth="44.0" text="Money" />
-            <Text layoutX="156.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register Form">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Text>
-            <Label layoutX="189.0" layoutY="329.0" opacity="0.6" text="Designed by TTB" />
-            <PasswordField fx:id="re_pwd" layoutX="203.0" layoutY="96.0" promptText="Your Password" />
-            <PasswordField fx:id="re_confirmpwd" layoutX="203.0" layoutY="128.0" promptText="Confirm Password" />
-            <Label layoutX="88.0" layoutY="132.0" prefHeight="17.0" prefWidth="98.0" text="Confirm Password" />
-         </children>
-      </Pane>
-   </children>
+  <children>
+    <Pane layoutX="81.0" layoutY="17.0" prefHeight="367.0" prefWidth="438.0">
+      <children>
+        <Button fx:id="btn_Register" layoutX="172.0" layoutY="313.0" mnemonicParsing="false" onAction="#Handle_Register" prefHeight="25.0" prefWidth="89.0" text="Accept" />
+        <TextField fx:id="re_user" layoutX="203.0" layoutY="171.0" promptText="Account Name" />
+        <Label layoutX="77.0" layoutY="175.0" text="Account " />
+        <Label layoutX="78.0" layoutY="207.0" prefHeight="17.0" prefWidth="53.0" text="Password" />
+        <Text layoutX="140.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register Form">
+          <font>
+            <Font size="25.0" />
+          </font>
+        </Text>
+        <Label layoutX="172.0" layoutY="345.0" opacity="0.6" text="Designed by TTB" />
+        <PasswordField fx:id="re_pwd" layoutX="203.0" layoutY="203.0" promptText="Your Password" />
+        <PasswordField fx:id="re_confirmpwd" layoutX="203.0" layoutY="238.0" promptText="Confirm Password" />
+        <Label layoutX="78.0" layoutY="242.0" prefHeight="17.0" prefWidth="98.0" text="Confirm Password" />
+        <Label layoutX="78.0" layoutY="275.0" prefHeight="17.0" prefWidth="98.0" text="Role" />
+        <TextField id="re_user" fx:id="re_role" layoutX="203.0" layoutY="271.0" promptText="0-1" />
+            <Label layoutX="77.0" layoutY="81.0" prefHeight="17.0" prefWidth="47.0" text="User" />
+            <Label layoutX="77.0" layoutY="111.0" prefHeight="17.0" prefWidth="47.0" text="Phone" />
+            <ComboBox fx:id="cb_user" layoutX="202.0" layoutY="77.0" prefWidth="150.0" />
+            <Label layoutX="77.0" layoutY="143.0" prefHeight="17.0" prefWidth="47.0" text="User ID" />
+            <TextField fx:id="re_phone" layoutX="203.0" layoutY="107.0" promptText="Phone Number" />
+            <TextField fx:id="re_id" disable="true" layoutX="203.0" layoutY="139.0" />
+            <Button fx:id="btn_search" layoutX="362.0" layoutY="107.0" mnemonicParsing="false" onAction="#searchHandle" text="Search" />
+      </children>
+    </Pane>
+  </children>
 </AnchorPane>

@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PcHistoryController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PcHistoryController">
    <children>
-      <ToolBar layoutX="7.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <Button mnemonicParsing="false" text="Button" />
-        </items>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <TextField fx:id="tf_limit" prefHeight="25.0" prefWidth="83.0" promptText="Default 5" />
+            <Button mnemonicParsing="false" onAction="#limitHandle" prefHeight="25.0" prefWidth="53.0" text="Limit" />
+            <Region prefHeight="30.0" prefWidth="23.0" />
+            <TextField fx:id="searchField" promptText="ID, PcID, GID, EID" />
+            <CheckBox mnemonicParsing="false" onAction="#searchHandle" text="Search">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </CheckBox>
+            <Region prefHeight="30.0" prefWidth="19.0" />
+            <ComboBox fx:id="cb_filter" prefHeight="25.0" prefWidth="134.0" promptText="Sort (ASC, DESC)" />
+            <Region prefHeight="30.0" prefWidth="21.0" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="53.0" text="Delete" />
+         </items>
       </ToolBar>
-      <TableView fx:id="table" layoutY="40.0" prefHeight="293.0" prefWidth="600.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+      <TableView fx:id="table" layoutX="20.0" layoutY="49.0" prefHeight="328.0" prefWidth="637.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="49.0">
         <columns>
           <TableColumn fx:id="col_id" prefWidth="48.0" text="ID" />
           <TableColumn fx:id="col_pcid" prefWidth="65.0" text="PcID" />
@@ -24,6 +37,6 @@
             <TableColumn fx:id="col_money" prefWidth="71.0" text="Money" />
         </columns>
       </TableView>
-      <Pagination fx:id="pagination" layoutX="224.0" layoutY="343.0" prefHeight="40.0" prefWidth="152.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="224.0" AnchorPane.topAnchor="343.0" />
+      <Pagination fx:id="pagination" layoutX="216.0" layoutY="391.0" prefHeight="40.0" prefWidth="152.0" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="232.0" AnchorPane.topAnchor="391.0" />
    </children>
 </AnchorPane>

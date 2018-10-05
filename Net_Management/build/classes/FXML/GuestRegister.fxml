@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controller.GuestRegisterController">
+  <children>
+    <Pane prefHeight="372.0" prefWidth="456.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="11.0">
+      <children>
+        <Label layoutX="88.0" layoutY="140.0" text="Full Name">
+          <font>
+            <Font size="13.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label font="$x1" layoutX="88.0" layoutY="186.0" text="Phone" />
+        <Label font="$x1" layoutX="88.0" layoutY="235.0" text="Address" />
+        <TextField fx:id="g_name" layoutX="228.0" layoutY="138.0" prefWidth="156.0" promptText="Full Name" />
+        <TextField fx:id="g_phone" layoutX="228.0" layoutY="184.0" prefWidth="156.0" promptText="Phone Number" />
+        <TextField fx:id="g_address" layoutX="228.0" layoutY="233.0" prefWidth="156.0" promptText="Address" />
+        <Button fx:id="btn_guest" layoutX="194.0" layoutY="300.0" mnemonicParsing="false" onAction="#Handle_Guest" prefHeight="32.9609375" prefWidth="70.0" text="OK" />
+        <Text layoutX="149.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guest Register">
+          <font>
+            <Font size="25.0" />
+          </font>
+        </Text>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

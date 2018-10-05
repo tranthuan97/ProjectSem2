@@ -10,13 +10,13 @@ package Models;
  * @author User
  */
 public class ModelUserTable {
+     String id, name, addr, phone;
 
-    String id, user, pwd, addr, phone, balance;
-
-    public ModelUserTable(String id, String user, String pwd) {
+    public ModelUserTable(String id, String name, String addr, String phone) {
         this.id = id;
-        this.user = user;
-        this.pwd = pwd;
+        this.name = name;
+        this.addr = addr;
+        this.phone = phone;
     }
 
     public String getId() {
@@ -27,28 +27,28 @@ public class ModelUserTable {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getName() {
+        return name;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getAddr() {
+        return addr;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
-    public String getBalance() {
-        return balance;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setBalance(String balance) {
-        this.balance = balance;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-
+    
 }

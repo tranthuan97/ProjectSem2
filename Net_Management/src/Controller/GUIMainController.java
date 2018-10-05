@@ -55,9 +55,10 @@ public class GUIMainController implements Initializable {
     Connection conn1;
 
     ObservableList<String> olsUser = FXCollections.observableArrayList();
+    ObservableList<String> olsAccount = FXCollections.observableArrayList();
     ObservableList<String> olsPc = FXCollections.observableArrayList();
     @FXML
-    ListView<String> accountlist, pclist;
+    ListView<String> accountlist, pclist, userlist;
     @FXML
     TabPane tbpane;
     @FXML
@@ -80,7 +81,8 @@ public class GUIMainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        loadUserLV();
+        loadUser();
+        loadAccountLV();
         loadPcLV();
         selectmenu();
         DateAndTime();
@@ -128,14 +130,20 @@ public class GUIMainController implements Initializable {
         }
     }
 
-    private void loadUserLV() {
+    private void loadAccountLV() {
+        olsAccount.remove(olsAccount);
+        String admin = "All Account";
+        
+        olsAccount.addAll(admin);
+        accountlist.getItems().addAll(olsAccount);
+    }
+    
+    private void loadUser() {
         olsUser.remove(olsUser);
-        String admin = "Admin";
         String emp = "Employee";
-        String guest_v = "VIP";
-        String guest_n = "Normal";
-        olsUser.addAll(admin, emp, guest_n, guest_v);
-        accountlist.getItems().addAll(olsUser);
+        String guest = "Guest";
+        olsUser.addAll(emp, guest);
+        userlist.getItems().addAll(olsUser);
     }
 
     private void loadPcLV() {
@@ -153,11 +161,11 @@ public class GUIMainController implements Initializable {
                 int i = accountlist.getSelectionModel().getSelectedIndex();
                 if (i == 0) {
                     try {
-                        Node node = (AnchorPane) FXMLLoader.load(getClass().getResource("/FXML/UserLayout.fxml"));
-                        Tab tb = new Tab("Admin", node);
+                        Node node = (AnchorPane) FXMLLoader.load(getClass().getResource("/FXML/AccountLayout1.fxml"));
+                        Tab tb = new Tab("All Account", node);
                         tbpane.getTabs().add(tb);
                     } catch (IOException ex) {
-                        Logger.getLogger(UserLayoutController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(AccountLayoutController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -173,7 +181,7 @@ public class GUIMainController implements Initializable {
                         Tab tb = new Tab("Máy Trạm", node);
                         tbpane.getTabs().add(tb);
                     } catch (IOException ex) {
-                        Logger.getLogger(UserLayoutController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(AccountLayoutController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }else if (i == 1) {
                     try {
@@ -182,7 +190,33 @@ public class GUIMainController implements Initializable {
                         Tab tb = new Tab("History", node);
                         tbpane.getTabs().add(tb);
                     } catch (IOException ex) {
-                        Logger.getLogger(UserLayoutController.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(AccountLayoutController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        });
+        userlist.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                int i = userlist.getSelectionModel().getSelectedIndex();
+                if (i == 0) {
+                    try {
+                        Node node = (AnchorPane) FXMLLoader.load(getClass().getResource("/FXML/EmployeeLayout.fxml"));
+//                        node.getStyleClass().add(getClass().getResource("/css/pclayout.css").toExternalForm());
+                        Tab tb = new Tab("Employee", node);
+                        tbpane.getTabs().add(tb);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AccountLayoutController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                else if (i == 1) {
+                    try {
+                        Node node = (AnchorPane) FXMLLoader.load(getClass().getResource("/FXML/GuestLayout.fxml"));
+//                        node.getStyleClass().add(getClass().getResource("/css/pclayout.css").toExternalForm());
+                        Tab tb = new Tab("Guest", node);
+                        tbpane.getTabs().add(tb);
+                    } catch (IOException ex) {
+                        Logger.getLogger(AccountLayoutController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }

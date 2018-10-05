@@ -24,7 +24,10 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import jdk.nashorn.internal.runtime.JSType;
 
 /**
  * FXML Controller class
@@ -38,6 +41,10 @@ public class PcHistoryController implements Initializable {
     Connection conn1;
 
     @FXML
+    TextField tf_limit, searchField;
+    @FXML
+    ComboBox cb_filter;
+    @FXML
     private Pagination pagination;
     @FXML
     private TableView<Models.ModelPcHistoryTable> table;
@@ -47,13 +54,48 @@ public class PcHistoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ObservableList<String> options
+                = FXCollections.observableArrayList(
+                        "Ascending",
+                        "Descending"
+                );
+        cb_filter.setItems(options);
+
         System.out.println(Math.ceil((double) count() / 5));
         loadData(0, 5);
         pagination.setPageCount((int) Math.ceil((double) count() / 5));
         pagination.currentPageIndexProperty().addListener((obs, oldIndex, newIndex) -> {
             oblist.removeAll(oblist);
-            loadData((int) newIndex * 5, ((int) newIndex + 1) * 5);
+            loadData((int) newIndex * 5, 5);
         });
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            int d = Integer.parseInt(str);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+    public void limitHandle() {
+        String limit = tf_limit.getText();
+
+        if (isNumeric(limit)) {
+            int intLimit = Integer.parseInt(limit);
+            oblist.removeAll(oblist);
+            loadData(0, intLimit);
+            pagination.setPageCount((int) Math.ceil((double) count() / intLimit));
+            pagination.currentPageIndexProperty().addListener((obs, oldIndex, newIndex) -> {
+                oblist.removeAll(oblist);
+                int fromIndex = (int) newIndex * intLimit;
+                loadData(fromIndex, intLimit);
+            });
+        } else {
+            System.out.println("not a number");
+        }
+//       
     }
 
     public int count() {
@@ -99,5 +141,9 @@ public class PcHistoryController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(PcHistoryController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void searchHandle(){
+        System.out.println("abc");
     }
 }
